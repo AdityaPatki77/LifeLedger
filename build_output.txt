@@ -1,0 +1,43 @@
+
+> lifeledger@0.0.0 build
+> tsc -b && vite build
+
+src/components/ui/EmptyState.tsx(1,10): error TS1484: 'ReactNode' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/components/ui/Modal.tsx(1,10): error TS1484: 'ReactNode' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/components/ui/ProGate.tsx(1,10): error TS1484: 'ReactNode' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/context/AuthContext.tsx(2,10): error TS1484: 'Session' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/context/AuthContext.tsx(2,19): error TS1484: 'User' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/context/AuthContext.tsx(4,10): error TS1484: 'User' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/lib/utils.ts(1,1): error TS6133: 'Category' is declared but its value is never read.
+src/lib/utils.ts(1,10): error TS1484: 'Category' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/pages/DashboardPage.tsx(5,10): error TS1484: 'Decision' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/pages/DashboardPage.tsx(5,20): error TS1484: 'Reflection' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/pages/DashboardPage.tsx(5,32): error TS1484: 'MoodCheckin' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/pages/DashboardPage.tsx(8,26): error TS6133: 'Legend' is declared but its value is never read.
+src/pages/DashboardPage.tsx(14,1): error TS6133: 'getCategoryStyle' is declared but its value is never read.
+src/pages/DecisionDetailPage.tsx(4,10): error TS1484: 'Decision' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/pages/DecisionDetailPage.tsx(4,20): error TS1484: 'Reflection' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/pages/DecisionDetailPage.tsx(6,18): error TS6133: 'addDays' is declared but its value is never read.
+src/pages/DecisionDetailPage.tsx(7,49): error TS6133: 'Eye' is declared but its value is never read.
+src/pages/DecisionDetailPage.tsx(7,96): error TS6133: 'Circle' is declared but its value is never read.
+src/pages/DecisionDetailPage.tsx(41,11): error TS6133: 'user' is declared but its value is never read.
+src/pages/DecisionDetailPage.tsx(42,20): error TS6133: 'showToast' is declared but its value is never read.
+src/pages/DecisionDetailPage.tsx(75,11): error TS6133: 'daysSince' is declared but its value is never read.
+src/pages/DecisionDetailPage.tsx(229,31): error TS6133: 'isNext' is declared but its value is never read.
+src/pages/JournalPage.tsx(5,10): error TS1484: 'Decision' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/pages/JournalPage.tsx(5,20): error TS1484: 'Reflection' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/pages/JournalPage.tsx(5,32): error TS1484: 'Category' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/pages/JournalPage.tsx(7,18): error TS6133: 'Filter' is declared but its value is never read.
+src/pages/JournalPage.tsx(35,11): error TS6133: 'cutoffDate' is declared but its value is never read.
+src/pages/LogDecisionPage.tsx(6,10): error TS1484: 'Category' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/pages/MoodTrackerPage.tsx(5,10): error TS1484: 'MoodCheckin' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/pages/MoodTrackerPage.tsx(5,23): error TS1484: 'Decision' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/pages/PatternsPage.tsx(6,10): error TS1484: 'Decision' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/pages/PatternsPage.tsx(6,20): error TS1484: 'Reflection' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/pages/PatternsPage.tsx(13,1): error TS6133: 'ProGate' is declared but its value is never read.
+src/pages/PatternsPage.tsx(14,1): error TS6133: 'EmptyState' is declared but its value is never read.
+src/pages/PricingPage.tsx(72,29): error TS6133: 'response' is declared but its value is never read.
+src/pages/ReflectionPage.tsx(4,10): error TS1484: 'Decision' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/pages/ReflectionPage.tsx(6,18): error TS6133: 'differenceInDays' is declared but its value is never read.
+src/pages/ReflectionPage.tsx(17,11): error TS6133: 'navigate' is declared but its value is never read.
+src/pages/SettingsPage.tsx(17,12): error TS6133: 'currentPw' is declared but its value is never read.
