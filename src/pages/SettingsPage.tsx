@@ -96,10 +96,7 @@ export function SettingsPage() {
         showToast('Data exported successfully!', 'success')
     }
 
-    const trialEnd = profile?.trial_started_at
-        ? new Date(new Date(profile.trial_started_at).getTime() + 7 * 24 * 60 * 60 * 1000)
-        : null
-    const isOnTrial = trialEnd && trialEnd > new Date() && !profile?.is_pro
+    const isOnTrial = false
 
     return (
         <div className="page-padding fade-in" style={{ maxWidth: 640, margin: '0 auto' }}>
@@ -245,17 +242,10 @@ export function SettingsPage() {
                     <div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
                             <span style={{ fontWeight: 600 }}>{isPro ? 'Pro Plan' : isOnTrial ? 'Pro Trial' : 'Free Plan'}</span>
-                            {isPro && <span className="badge badge-gold">Active</span>}
-                            {isOnTrial && <span className="badge badge-blue">Trial</span>}
                         </div>
                         {isPro && profile?.pro_expires_at && (
                             <p style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>
                                 Renews {new Date(profile.pro_expires_at).toLocaleDateString()}
-                            </p>
-                        )}
-                        {isOnTrial && trialEnd && (
-                            <p style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>
-                                Trial ends {trialEnd.toLocaleDateString()}
                             </p>
                         )}
                     </div>

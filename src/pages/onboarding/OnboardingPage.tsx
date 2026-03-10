@@ -22,13 +22,8 @@ export function OnboardingPage() {
     const handleFinish = async () => {
         if (!user) return
         setLoading(true)
-        const trialStart = new Date().toISOString()
-        const trialEnd = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString()
-
         const { error } = await supabase.from('users').update({
             age_range: ageRange,
-            trial_started_at: trialStart,
-            pro_expires_at: trialEnd,
         }).eq('id', user.id)
 
         if (error) {
@@ -167,13 +162,7 @@ export function OnboardingPage() {
                                 value={firstDecision}
                                 onChange={e => setFirstDecision(e.target.value)}
                             />
-                            <div style={{
-                                background: 'var(--gold-dim)', border: '1px solid rgba(201,168,76,0.2)',
-                                borderRadius: 8, padding: '10px 14px', marginTop: 12, marginBottom: 20,
-                                fontSize: '0.8rem', color: 'var(--gold)'
-                            }}>
-                                🎁 You're getting a free 7-day Pro trial — unlimited decisions & AI analysis!
-                            </div>
+
                             <div style={{ display: 'flex', gap: 10 }}>
                                 <button className="btn btn-secondary" onClick={() => setStep(2)}>Back</button>
                                 <button className="btn btn-primary btn-full" onClick={handleFinish} disabled={loading}>

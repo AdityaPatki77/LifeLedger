@@ -60,7 +60,7 @@ export function LandingPage() {
                     </Link>
                 </div>
                 <p style={{ marginTop: 20, fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-                    Free forever · 7-day Pro trial · No credit card
+                    Free forever · No credit card required
                 </p>
             </section>
 

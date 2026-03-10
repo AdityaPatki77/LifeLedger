@@ -20,7 +20,6 @@ const PRO_FEATURES = [
     'Enhanced Pattern Intelligence screen',
     'Mood + Energy correlation analysis',
     'Happiness analytics & CSV export',
-    '7-day free trial included',
 ]
 
 declare global {
@@ -170,7 +169,7 @@ export function PricingPage() {
                                 onClick={() => handleUpgrade('monthly')}
                                 disabled={loading !== null}
                             >
-                                {loading === 'monthly' ? <Spinner size={16} /> : <><Zap size={16} /> Start 7-Day Free Trial</>}
+                                {loading === 'monthly' ? <Spinner size={16} /> : <><Zap size={16} /> Upgrade to Pro</>}
                             </button>
                             <button
                                 className="btn btn-secondary btn-full"
@@ -181,7 +180,7 @@ export function PricingPage() {
                                 {loading === 'annual' ? <Spinner size={14} /> : 'Or pay annually — Rs 2,999/yr'}
                             </button>
                             <p style={{ textAlign: 'center', fontSize: '0.72rem', color: 'var(--text-muted)', marginTop: 10 }}>
-                                7-day free trial included. Cancel anytime.
+                                Cancel anytime.
                             </p>
                         </div>
                     )}

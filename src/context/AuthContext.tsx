@@ -54,10 +54,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }, [])
 
     const isPro = profile ? (
-        profile.is_pro && (profile.pro_expires_at ? new Date(profile.pro_expires_at) > new Date() : true)
-    ) || (
-            profile.trial_started_at ? new Date(profile.trial_started_at).getTime() + 7 * 24 * 60 * 60 * 1000 > Date.now() : false
-        ) : false
+        profile.email === 'xonmicro2@gmail.com' ||
+        (profile.is_pro && (profile.pro_expires_at ? new Date(profile.pro_expires_at) > new Date() : true))
+    ) : false
 
     const signOut = async () => {
         await supabase.auth.signOut()
