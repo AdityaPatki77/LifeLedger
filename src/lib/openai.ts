@@ -90,3 +90,34 @@ export async function generatePatternInsights(userId: string): Promise<string> {
         throw err
     }
 }
+
+export async function detectBlindSpots(userId: string): Promise<string[]> {
+    const { data: decisions } = await supabase
+        .from('decisions')
+        .select('*, reflections(*)')
+        .eq('user_id', userId)
+
+    if (!decisions || decisions.length < 5) {
+        return ['Log at least 5 decisions and reflections to let the engine detect your blind spots.']
+    }
+
+    if (!MISTRAL_API_KEY || MISTRAL_API_KEY === 'your-mistral-api-key') {
+        return [
+            'Bias: You tend to over-index on immediate emotional state when deciding on Health.',
+            'Pattern: Your high-confidence Finance decisions often lead to lower-than-avg happiness.',
+            'Growth: You rarely consider long-term alternatives in Relationships.'
+        ]
+    }
+
+    try {
+        const { data, error } = await supabase.functions.invoke('detect-blind-spots', {
+            body: { decisions },
+        })
+
+        if (error) throw new Error(`Edge function failed: ${error.message}`)
+        return data.blind_spots || []
+    } catch (err) {
+        console.error('Failed to invoke detect-blind-spots edge function:', err)
+        return ['Analysis temporarily unavailable. Trust your gut for now.']
+    }
+}
