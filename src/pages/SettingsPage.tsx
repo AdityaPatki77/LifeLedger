@@ -28,6 +28,7 @@ export function SettingsPage() {
     const [newPw, setNewPw] = useState('')
     const [savingPw, setSavingPw] = useState(false)
     const [deleteModal, setDeleteModal] = useState(false)
+    const [cancelModal, setCancelModal] = useState(false)
     const [deleting, setDeleting] = useState(false)
     const [deleteConfirm, setDeleteConfirm] = useState('')
     const [exporting, setExporting] = useState(false)
@@ -260,10 +261,34 @@ export function SettingsPage() {
                     </div>
                     {!isPro && <Link to="/pricing" className="btn btn-gold btn-sm">Upgrade to Pro</Link>}
                     {isPro && (
-                        <button className="btn btn-secondary btn-sm" style={{ color: 'var(--danger)', borderColor: 'var(--danger)' }}
-                            onClick={() => showToast('Contact support@lifeledger.app to cancel your subscription.', 'info')}>
-                            Cancel Subscription
-                        </button>
+                        <>
+                            <button className="btn btn-secondary btn-sm" style={{ color: 'var(--danger)', borderColor: 'var(--danger)' }}
+                                onClick={() => setCancelModal(true)}>
+                                Cancel Subscription
+                            </button>
+                            <Modal isOpen={cancelModal} onClose={() => setCancelModal(false)} title="Cancel Subscription">
+                                <div style={{ marginBottom: 20 }}>
+                                    <div style={{ padding: 16, background: 'var(--bg-primary)', borderRadius: 12, marginBottom: 16, border: '1px solid var(--border)' }}>
+                                        <h4 style={{ margin: '0 0 8px 0', fontSize: '0.9rem' }}>Subscription Pilot Phase</h4>
+                                        <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', lineHeight: 1.5, margin: 0 }}>
+                                            To ensure the best possible experience during our launch, we currently process all cancellation requests personally.
+                                        </p>
+                                    </div>
+                                    <p style={{ color: 'var(--text-primary)', fontSize: '0.875rem' }}>
+                                        Please send a quick email to <strong>support@lifeledger.app</strong> from your registered email address.
+                                    </p>
+                                    <p style={{ color: 'var(--text-secondary)', fontSize: '0.8rem' }}>
+                                        Requests are typically processed within 24 hours. Your access will continue until the end of your current billing period.
+                                    </p>
+                                </div>
+                                <div style={{ display: 'flex', gap: 10, justifyContent: 'flex-end' }}>
+                                    <button className="btn btn-secondary" onClick={() => setCancelModal(false)}>Close</button>
+                                    <a href={`mailto:support@lifeledger.app?subject=Subscription Cancellation Request: ${user?.email}`} className="btn btn-primary">
+                                        Open Email Client
+                                    </a>
+                                </div>
+                            </Modal>
+                        </>
                     )}
                 </div>
             </div>
