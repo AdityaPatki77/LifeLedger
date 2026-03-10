@@ -33,6 +33,9 @@ export function PricingPage() {
     const { toast, showToast, hideToast } = useToast()
     const [loading, setLoading] = useState<'monthly' | 'annual' | null>(null)
     const [success, setSuccess] = useState(false)
+    const [promoCode, setPromoCode] = useState('')
+    const [discountActive, setDiscountActive] = useState(false)
+    const [showPromoInput, setShowPromoInput] = useState(false)
 
     const loadRazorpay = () => {
         return new Promise<void>((resolve) => {
@@ -54,7 +57,11 @@ export function PricingPage() {
         setLoading(plan)
         await loadRazorpay()
 
-        const amount = plan === 'monthly' ? 34900 : 299900 // in paise (Rs 349, Rs 2999)
+        let amount = plan === 'monthly' ? 19900 : 149900 // Rs 199, Rs 1499
+        if (discountActive) {
+            amount = Math.round(amount * 0.11) // 89% off
+        }
+
         const description = plan === 'monthly' ? 'LifeLedger Pro — Monthly' : 'LifeLedger Pro — Annual'
 
         const options = {
@@ -107,9 +114,8 @@ export function PricingPage() {
             )}
 
             <div style={{ textAlign: 'center', marginBottom: 48 }}>
-                <h1 style={{ fontFamily: 'Playfair Display, serif', marginBottom: 12 }}>Simple, honest pricing</h1>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '1rem' }}>
-                    Start free. Upgrade when you're ready to unlock the full power of decision intelligence.
+                    Luxury decision intelligence, now accessible for everyone.
                 </p>
             </div>
 
@@ -144,10 +150,15 @@ export function PricingPage() {
                     <div style={{ marginBottom: 28 }}>
                         <span className="badge badge-gold" style={{ marginBottom: 12 }}>✦ Pro</span>
                         <div style={{ marginBottom: 10 }}>
-                            <div style={{ fontFamily: 'Playfair Display, serif', fontSize: '2.5rem', fontWeight: 700, color: 'var(--gold)', display: 'inline' }}>Rs 349</div>
+                            <div style={{ fontFamily: 'Playfair Display, serif', fontSize: '2.5rem', fontWeight: 700, color: 'var(--gold)', display: 'inline' }}>
+                                Rs {discountActive ? Math.round(199 * 0.11) : 199}
+                            </div>
                             <span style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>/month</span>
+                            {discountActive && <span style={{ marginLeft: 8, color: 'var(--success)', fontSize: '0.8rem', fontWeight: 600 }}> (89% OFF)</span>}
                         </div>
-                        <div style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>or Rs 2,999/year (save Rs 1,189)</div>
+                        <div style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>
+                            or Rs {discountActive ? Math.round(1499 * 0.11) : 1499}/year
+                        </div>
                     </div>
                     <ul style={{ listStyle: 'none', marginBottom: 28 }}>
                         {PRO_FEATURES.map(f => (
@@ -182,6 +193,42 @@ export function PricingPage() {
                             <p style={{ textAlign: 'center', fontSize: '0.72rem', color: 'var(--text-muted)', marginTop: 10 }}>
                                 Cancel anytime.
                             </p>
+
+                            {!discountActive && (
+                                <div style={{ marginTop: 16, textAlign: 'center' }}>
+                                    {!showPromoInput ? (
+                                        <button
+                                            onClick={() => setShowPromoInput(true)}
+                                            style={{ background: 'none', border: 'none', color: 'var(--text-muted)', fontSize: '0.7rem', cursor: 'pointer', textDecoration: 'underline' }}
+                                        >
+                                            Have a promo code?
+                                        </button>
+                                    ) : (
+                                        <div style={{ display: 'flex', gap: 6 }}>
+                                            <input
+                                                className="input input-sm"
+                                                placeholder="Code"
+                                                style={{ fontSize: '0.75rem', padding: '4px 8px' }}
+                                                value={promoCode}
+                                                onChange={e => setPromoCode(e.target.value)}
+                                            />
+                                            <button
+                                                className="btn btn-secondary btn-sm"
+                                                onClick={() => {
+                                                    if (promoCode.toUpperCase() === 'XON89') {
+                                                        setDiscountActive(true)
+                                                        showToast('Promo code applied! 89% discount active.', 'success')
+                                                    } else {
+                                                        showToast('Invalid promo code', 'error')
+                                                    }
+                                                }}
+                                            >
+                                                Apply
+                                            </button>
+                                        </div>
+                                    )}
+                                </div>
+                            )}
                         </div>
                     )}
                 </div>
