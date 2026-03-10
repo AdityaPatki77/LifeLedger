@@ -157,7 +157,7 @@ export function PricingPage() {
                             {discountActive && <span style={{ marginLeft: 8, color: 'var(--success)', fontSize: '0.8rem', fontWeight: 600 }}> (89% OFF)</span>}
                         </div>
                         <div style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>
-                            or Rs {discountActive ? Math.round(1499 * 0.11) : 1499}/year
+                            or Rs {discountActive ? Math.round(1499 * 0.11) : 1499}/year (save Rs {discountActive ? Math.round(889 * 0.11) : 889})
                         </div>
                     </div>
                     <ul style={{ listStyle: 'none', marginBottom: 28 }}>
