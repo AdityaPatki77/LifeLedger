@@ -12,21 +12,22 @@ export function TopBar() {
 
     return (
         <header className="topbar">
-            {/* Logo (mobile only — desktop shows sidebar logo) */}
-            <div className="flex items-center gap-2" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            {/* Logo (mobile only) */}
+            <div className="topbar-logo" style={{ alignItems: 'center', gap: 10 }}>
                 <div style={{
-                    width: 28, height: 28, borderRadius: 7,
+                    width: 32, height: 32, borderRadius: 10,
                     background: 'linear-gradient(135deg, var(--accent), #8B5CF6)',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center'
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    boxShadow: '0 4px 15px var(--accent-glow)'
                 }}>
-                    <Zap size={14} style={{ color: 'white' }} />
+                    <Zap size={18} style={{ color: 'white' }} />
                 </div>
-                <span style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700 }}>LifeLedger</span>
+                <span style={{ fontFamily: 'Playfair Display, serif', fontWeight: 800, fontSize: '1.2rem', letterSpacing: '-0.02em' }}>LifeLedger</span>
                 <span className={`badge ${planClass}`} style={{ fontSize: '0.65rem' }}>{planLabel}</span>
             </div>
 
             {/* User menu */}
-            <div style={{ position: 'relative' }}>
+            <div className="topbar-user">
                 <button
                     onClick={() => setMenuOpen(!menuOpen)}
                     style={{

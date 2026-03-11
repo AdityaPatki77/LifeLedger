@@ -624,6 +624,43 @@ input[type="range"]::-webkit-slider-thumb:hover {
   }
 }
 
+/* === TOPBAR === */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  border-bottom: 1px solid var(--border);
+  min-height: 64px;
+  position: sticky;
+  top: 0;
+  z-index: 90;
+}
+
+@media (max-width: 768px) {
+  .topbar {
+    padding: 10px 16px;
+  }
+}
+
+.topbar-logo {
+  display: none;
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .topbar-logo {
+    display: flex;
+  }
+}
+
+.topbar-user {
+  margin-left: auto;
+  position: relative;
+}
+
 /* === BOTTOM NAV === */
 .bottom-nav {
   display: none;
