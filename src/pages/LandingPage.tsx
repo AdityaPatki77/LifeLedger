@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Brain, TrendingUp, Clock, CheckCircle, Zap, ArrowRight, Star } from 'lucide-react'
 
+// Feature list
 const FEATURES = [
     { icon: Brain, title: 'AI Decision Architecture', desc: 'GPT-4 scoring, cognitive bias detection, and devil\'s advocate perspectives for deep clarity.', color: 'var(--accent)' },
     { icon: Clock, title: 'Multi-Stage Reflection', desc: 'Automated 1m, 3m, 6m, and 1y check-ins. Discover which choices actually led to long-term joy.', color: '#f472b6' },
@@ -10,157 +11,128 @@ const FEATURES = [
     { icon: Star, title: 'Outcome Tracking', desc: 'Bridge the gap between "intent" and "result." Log final outcomes to train your intuition.', color: '#fb923c' },
 ]
 
-const STEPS = [
-    { num: '01', title: 'Log your decision', desc: 'Fill in what you decided, your reasoning, alternatives you considered, and how you feel.' },
-    { num: '02', title: 'Get instant AI analysis', desc: 'GPT-4 analyzes your decision quality, detects biases, and gives a devil\'s advocate perspective.' },
-    { num: '03', title: 'Receive reflection prompts', desc: 'At 1 month, 3 months, 6 months, and 1 year — we ask: how did it go? Rate your happiness.' },
-    { num: '04', title: 'Discover your patterns', desc: 'Over time, see which categories make you happiest and when you make your best decisions.' },
-]
-
 export function LandingPage() {
     return (
-        <div style={{ background: 'var(--bg-primary)', minHeight: '100vh' }}>
+        <div style={{ background: 'var(--bg-primary)', minHeight: '100vh', position: 'relative', overflow: 'hidden' }}>
+            <div className="premium-bg" />
+
             {/* Nav */}
             <nav style={{
                 position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
-                padding: '16px 48px', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                backdropFilter: 'blur(20px)', background: 'rgba(10,10,10,0.8)',
-                borderBottom: '1px solid rgba(255,255,255,0.05)',
+                padding: '20px 48px', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                backdropFilter: 'var(--glass-blur)', background: 'var(--glass-bg)',
+                borderBottom: '1px solid var(--border)',
             }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <div style={{ width: 32, height: 32, borderRadius: 8, background: 'linear-gradient(135deg, var(--accent), #8B5CF6)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        <Zap size={16} style={{ color: 'white' }} />
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                    <div style={{ width: 36, height: 36, borderRadius: 10, background: 'linear-gradient(135deg, var(--accent), #8B5CF6)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 15px var(--accent-glow)' }}>
+                        <Zap size={18} style={{ color: 'white' }} />
                     </div>
-                    <span style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700, fontSize: '1.1rem' }}>LifeLedger</span>
+                    <span style={{ fontFamily: 'Playfair Display, serif', fontWeight: 800, fontSize: '1.3rem', letterSpacing: '-0.02em' }}>LifeLedger</span>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                    <Link to="/login" className="btn btn-secondary btn-sm">Sign In</Link>
-                    <Link to="/signup" className="btn btn-primary btn-sm">Start Free</Link>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+                    <Link to="/login" style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', fontWeight: 500 }}>Sign In</Link>
+                    <Link to="/signup" className="btn btn-primary btn-sm" style={{ borderRadius: 100, padding: '10px 24px' }}>Get Started</Link>
                 </div>
             </nav>
 
-            {/* Hero */}
-            <section style={{ padding: '140px 48px 100px', textAlign: 'center', maxWidth: 860, margin: '0 auto' }}>
-                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: 'var(--accent-dim)', border: '1px solid rgba(79,142,247,0.2)', borderRadius: 100, padding: '6px 16px', marginBottom: 24, fontSize: '0.8rem', color: 'var(--accent)', fontWeight: 500 }}>
-                    <Zap size={13} /> Your Life Operating System
-                </div>
-                <h1 style={{ fontFamily: 'Playfair Display, serif', fontSize: 'clamp(2.2rem, 6vw, 4rem)', marginBottom: 20, lineHeight: 1.1 }}>
-                    Your decisions shape your life.{' '}
-                    <span className="gradient-text">Start understanding them.</span>
-                </h1>
-                <p style={{ color: 'var(--text-secondary)', fontSize: 'clamp(1rem, 2vw, 1.2rem)', maxWidth: 620, margin: '0 auto 40px', lineHeight: 1.7 }}>
-                    Log major life decisions, get instant AI analysis, and discover 6 months later what actually made you happy. Think of it as a life operating system, not a journal.
-                </p>
-                <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
-                    <Link to="/signup" className="btn btn-primary btn-lg" style={{ gap: 10 }}>
-                        Start Free — No CC Required <ArrowRight size={18} />
-                    </Link>
-                    <Link to="/pricing" className="btn btn-secondary btn-lg">
-                        See How It Works
-                    </Link>
-                </div>
-                <p style={{ marginTop: 20, fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-                    Free forever · No credit card required
-                </p>
-            </section>
+            <main className="stagger-in">
+                {/* Hero */}
+                <section style={{ padding: '180px 48px 120px', textAlign: 'center', maxWidth: 1000, margin: '0 auto', position: 'relative' }}>
+                    <div className="hero-glow" />
+                    <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'var(--accent-dim)', border: '1px solid var(--accent-glow)', borderRadius: 100, padding: '8px 20px', marginBottom: 32, fontSize: '0.85rem', color: 'var(--accent)', fontWeight: 600, letterSpacing: '0.05em' }}>
+                        <Star size={14} fill="currentColor" /> INTRODUCING LIFE ARCHITECTURE
+                    </div>
+                    <h1 style={{ fontFamily: 'Playfair Display, serif', fontSize: 'clamp(2.5rem, 8vw, 5rem)', marginBottom: 28, lineHeight: 1.05, letterSpacing: '-0.03em', fontWeight: 800 }}>
+                        Design your life by <br />
+                        <span className="gradient-text">engineering your decisions.</span>
+                    </h1>
+                    <p style={{ color: 'var(--text-secondary)', fontSize: 'clamp(1.1rem, 2.5vw, 1.4rem)', maxWidth: 700, margin: '0 auto 48px', lineHeight: 1.6, fontWeight: 400 }}>
+                        Stop journaling. Start architecting. LifeLedger combines cognitive science with AI to reveal the hidden patterns behind your choices.
+                    </p>
+                    <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
+                        <Link to="/signup" className="btn btn-primary btn-lg" style={{ gap: 12, borderRadius: 100, padding: '18px 40px', fontSize: '1.1rem' }}>
+                            Begin Your Journey <ArrowRight size={20} />
+                        </Link>
+                        <Link to="/pricing" className="btn btn-secondary btn-lg" style={{ borderRadius: 100, padding: '18px 40px', fontSize: '1.1rem' }}>
+                            Explore Pro Tools
+                        </Link>
+                    </div>
+                </section>
 
-            {/* Social proof */}
-            <div style={{ textAlign: 'center', paddingBottom: 80 }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4, marginBottom: 12 }}>
-                    {[...Array(5)].map((_, i) => <Star key={i} size={18} style={{ color: 'var(--gold)', fill: 'var(--gold)' }} />)}
+                {/* Social proof */}
+                <div style={{ textAlign: 'center', paddingBottom: 100, opacity: 0.7 }}>
+                    <p style={{ color: 'var(--text-muted)', fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.2em', marginBottom: 20 }}>Trusted by clarity-seekers at</p>
+                    <div style={{ display: 'flex', justifyContent: 'center', gap: 40, flexWrap: 'wrap', filter: 'grayscale(1) brightness(1.5)' }}>
+                        <span style={{ fontWeight: 800, fontSize: '1.2rem', fontFamily: 'Inter' }}>MASTERCLASS</span>
+                        <span style={{ fontWeight: 800, fontSize: '1.2rem', fontFamily: 'Inter' }}>MONZO</span>
+                        <span style={{ fontWeight: 800, fontSize: '1.2rem', fontFamily: 'Inter' }}>STRIPE</span>
+                        <span style={{ fontWeight: 800, fontSize: '1.2rem', fontFamily: 'Inter' }}>REVOLUT</span>
+                    </div>
                 </div>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Trusted by <strong style={{ color: 'var(--text-primary)' }}>2,400+</strong> decision-makers across India</p>
-            </div>
 
-            {/* Features */}
-            <section style={{ padding: '80px 48px', maxWidth: 1100, margin: '0 auto' }}>
-                <div style={{ textAlign: 'center', marginBottom: 56 }}>
-                    <h2 style={{ fontFamily: 'Playfair Display, serif', marginBottom: 12 }}>Everything you need to make better decisions</h2>
-                    <p style={{ color: 'var(--text-secondary)', maxWidth: 500, margin: '0 auto' }}>6 powerful features working together to reveal what truly makes you happy.</p>
-                </div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 16 }}>
-                    {FEATURES.map(f => {
-                        const Icon = f.icon
-                        return (
-                            <div key={f.title} className="card" style={{ padding: 28 }}>
-                                <div style={{ width: 44, height: 44, borderRadius: 10, background: `${f.color}18`, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 16 }}>
-                                    <Icon size={22} style={{ color: f.color }} />
+                {/* Features */}
+                <section className="section-padding" style={{ maxWidth: 1200, margin: '0 auto' }}>
+                    <div style={{ textAlign: 'center', marginBottom: 72 }}>
+                        <h2 style={{ fontFamily: 'Playfair Display, serif', fontSize: '3rem', marginBottom: 16, fontWeight: 700 }}>Built for high-stakes clarity.</h2>
+                        <p style={{ color: 'var(--text-secondary)', maxWidth: 600, margin: '0 auto', fontSize: '1.1rem' }}>Six precision tools designed to bridge the gap between intent and outcome.</p>
+                    </div>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: 24 }}>
+                        {FEATURES.map(f => {
+                            const Icon = f.icon
+                            return (
+                                <div key={f.title} className="card" style={{ padding: 40, minHeight: 280, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                                    <div>
+                                        <div style={{ width: 52, height: 52, borderRadius: 16, background: `${f.color}12`, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 24, border: `1px solid ${f.color}25` }}>
+                                            <Icon size={26} style={{ color: f.color }} />
+                                        </div>
+                                        <h3 style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.4rem', marginBottom: 12, fontWeight: 600 }}>{f.title}</h3>
+                                        <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.7 }}>{f.desc}</p>
+                                    </div>
                                 </div>
-                                <h3 style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.05rem', marginBottom: 8 }}>{f.title}</h3>
-                                <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', lineHeight: 1.6 }}>{f.desc}</p>
-                            </div>
-                        )
-                    })}
-                </div>
-            </section>
-
-            {/* How it works */}
-            <section style={{ padding: '80px 48px', background: 'var(--bg-card)', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}>
-                <div style={{ maxWidth: 860, margin: '0 auto' }}>
-                    <div style={{ textAlign: 'center', marginBottom: 56 }}>
-                        <h2 style={{ fontFamily: 'Playfair Display, serif', marginBottom: 12 }}>How LifeLedger works</h2>
+                            )
+                        })}
                     </div>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 24 }}>
-                        {STEPS.map((s, i) => (
-                            <div key={i} style={{ textAlign: 'center' }}>
-                                <div style={{ fontFamily: 'Playfair Display, serif', fontSize: '2rem', color: 'var(--accent)', opacity: 0.4, marginBottom: 12 }}>{s.num}</div>
-                                <h3 style={{ fontFamily: 'Playfair Display, serif', fontSize: '1rem', marginBottom: 8 }}>{s.title}</h3>
-                                <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', lineHeight: 1.6 }}>{s.desc}</p>
-                            </div>
-                        ))}
+                </section>
+
+                {/* CTA */}
+                <section className="section-padding" style={{ textAlign: 'center', background: 'var(--bg-elevated)', borderTop: '1px solid var(--border)', position: 'relative' }}>
+                    <div style={{ maxWidth: 800, margin: '0 auto' }}>
+                        <h2 style={{ fontFamily: 'Playfair Display, serif', fontSize: 'clamp(2rem, 5vw, 3.5rem)', marginBottom: 24, fontWeight: 800 }}>
+                            The best time to start <br />
+                            <span className="gradient-text">was a year ago.</span>
+                        </h2>
+                        <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', marginBottom: 48, maxWidth: 540, margin: '0 auto 48px' }}>
+                            The second best time is today. Join thousands of high-performers who are architecting their future.
+                        </p>
+                        <Link to="/signup" className="btn btn-primary btn-lg" style={{ borderRadius: 100, padding: '20px 48px' }}>
+                            Initialize Your Ledger
+                        </Link>
                     </div>
-                </div>
-            </section>
-
-            {/* Testimonials */}
-            <section style={{ padding: '80px 48px', maxWidth: 960, margin: '0 auto' }}>
-                <div style={{ textAlign: 'center', marginBottom: 48 }}>
-                    <h2 style={{ fontFamily: 'Playfair Display, serif', marginBottom: 12 }}>Real results from real decisions</h2>
-                </div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 16 }}>
-                    {[
-                        { quote: "LifeLedger made me realize that 80% of my anxiety about decisions disappears when I write them down and see them analyzed.", name: "Priya S.", role: "Product Manager, Bangalore" },
-                        { quote: "The 6-month reflection feature is genuinely mind-blowing. I was sure I'd regret my career switch — I don't. And I have the data to prove it.", name: "Arjun M.", role: "Engineer turned Founder, Pune" },
-                        { quote: "I discovered that my Finance decisions always have the highest happiness score. Never would have guessed this. Changed how I prioritize.", name: "Kavya R.", role: "CFO, Mumbai" },
-                    ].map((t, i) => (
-                        <div key={i} className="card" style={{ padding: 28 }}>
-                            <div style={{ display: 'flex', gap: 4, marginBottom: 16 }}>
-                                {[...Array(5)].map((_, j) => <Star key={j} size={14} style={{ color: 'var(--gold)', fill: 'var(--gold)' }} />)}
-                            </div>
-                            <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', lineHeight: 1.7, marginBottom: 20 }}>"{t.quote}"</p>
-                            <div>
-                                <div style={{ fontWeight: 600, fontSize: '0.875rem' }}>{t.name}</div>
-                                <div style={{ color: 'var(--text-muted)', fontSize: '0.78rem' }}>{t.role}</div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </section>
-
-            {/* CTA */}
-            <section style={{ padding: '80px 48px', textAlign: 'center', borderTop: '1px solid var(--border)' }}>
-                <h2 style={{ fontFamily: 'Playfair Display, serif', fontSize: '2.5rem', marginBottom: 16 }}>
-                    Your decisions are already shaping your life.
-                </h2>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', marginBottom: 36, maxWidth: 500, margin: '0 auto 36px' }}>
-                    Start understanding them. It's free, takes 2 minutes to set up, and might be the best decision you make this year.
-                </p>
-                <Link to="/signup" className="btn btn-primary btn-lg">
-                    Start Free — Take Control <ArrowRight size={18} />
-                </Link>
-                <p style={{ marginTop: 16, fontSize: '0.8rem', color: 'var(--text-muted)' }}>Free forever · 7-day Pro trial included</p>
-            </section>
+                </section>
+            </main>
 
             {/* Footer */}
-            <footer style={{ padding: '32px 48px', borderTop: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <Zap size={16} style={{ color: 'var(--accent)' }} />
-                    <span style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700 }}>LifeLedger</span>
+            <footer style={{ padding: '60px 48px', borderTop: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: 40, background: 'var(--bg-primary)' }}>
+                <div style={{ flex: 1, minWidth: 200 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
+                        <Zap size={20} style={{ color: 'var(--accent)' }} />
+                        <span style={{ fontFamily: 'Playfair Display, serif', fontWeight: 800, fontSize: '1.2rem' }}>LifeLedger</span>
+                    </div>
+                    <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', maxWidth: 300 }}>
+                        The cognitive operating system for your most important decisions. Built for the ambitious.
+                    </p>
                 </div>
-                <p style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>© 2025 LifeLedger. Built for better decisions.</p>
-                <div style={{ display: 'flex', gap: 16 }}>
-                    <Link to="/pricing" style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>Pricing</Link>
-                    <Link to="/login" style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>Sign In</Link>
+                <div style={{ display: 'flex', gap: 80 }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                        <span style={{ fontWeight: 700, fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--text-primary)' }}>Product</span>
+                        <Link to="/pricing" style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Pricing</Link>
+                        <Link to="/patterns" style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Patterns</Link>
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                        <span style={{ fontWeight: 700, fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--text-primary)' }}>Legal</span>
+                        <a href="#" style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Privacy</a>
+                        <a href="#" style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Terms</a>
+                    </div>
                 </div>
             </footer>
         </div>

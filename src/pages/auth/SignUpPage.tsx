@@ -40,24 +40,26 @@ export function SignUpPage() {
             minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center',
             background: 'var(--bg-primary)', padding: 16
         }}>
-            <div style={{ width: '100%', maxWidth: 420 }} className="fade-in">
+            <div style={{ width: '100%', maxWidth: 420 }} className="stagger-in">
                 <div style={{ textAlign: 'center', marginBottom: 40 }}>
                     <div style={{
-                        width: 48, height: 48, borderRadius: 12,
+                        width: 56, height: 56, borderRadius: 14,
                         background: 'linear-gradient(135deg, var(--accent), #8B5CF6)',
-                        display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px'
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        margin: '0 auto 20px',
+                        boxShadow: '0 8px 30px var(--accent-glow)'
                     }}>
-                        <Zap size={24} style={{ color: 'white' }} />
+                        <Zap size={28} style={{ color: 'white' }} />
                     </div>
-                    <h1 style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.8rem', marginBottom: 8 }}>
+                    <h1 style={{ fontFamily: 'Playfair Display, serif', fontSize: '2.2rem', marginBottom: 8, fontWeight: 800 }}>
                         Start your journey
                     </h1>
-                    <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
+                    <p style={{ color: 'var(--text-secondary)', fontSize: '1rem' }}>
                         Free forever. No credit card required.
                     </p>
                 </div>
 
-                <div className="card" style={{ padding: 32 }}>
+                <div className="card" style={{ padding: 40, background: 'var(--bg-card)', backdropFilter: 'var(--glass-blur)' }}>
                     {error && (
                         <div style={{
                             background: 'rgba(239,68,68,0.1)', border: '1px solid rgba(239,68,68,0.3)',

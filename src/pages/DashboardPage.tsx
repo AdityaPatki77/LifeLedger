@@ -114,7 +114,7 @@ export function DashboardPage() {
     if (loading) return <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '60vh' }}><Spinner size={28} label="Loading dashboard..." /></div>
 
     return (
-        <div className="page-padding fade-in">
+        <div className="page-padding stagger-in">
             {/* Header */}
             <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 28, flexWrap: 'wrap', gap: 12 }}>
                 <div>
@@ -149,16 +149,16 @@ export function DashboardPage() {
                 ].map(stat => {
                     const Icon = stat.icon
                     return (
-                        <div key={stat.label} className="card" style={{ padding: 20 }}>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
-                                <div style={{ width: 36, height: 36, borderRadius: 8, background: `${stat.color}1a`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                    <Icon size={18} style={{ color: stat.color }} />
+                        <div key={stat.label} className="card" style={{ padding: 24, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', minHeight: 140 }}>
+                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
+                                <div style={{ width: 40, height: 40, borderRadius: 12, background: `${stat.color}15`, display: 'flex', alignItems: 'center', justifyContent: 'center', border: `1px solid ${stat.color}30` }}>
+                                    <Icon size={20} style={{ color: stat.color }} />
                                 </div>
-                                <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                                <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
                                     {stat.label}
                                 </span>
                             </div>
-                            <div style={{ fontSize: '1.8rem', fontWeight: 700, fontFamily: 'Playfair Display, serif' }}>
+                            <div style={{ fontSize: '2.2rem', fontWeight: 800, fontFamily: 'Playfair Display, serif', letterSpacing: '-0.02em', color: 'var(--text-primary)' }}>
                                 {stat.value}
                             </div>
                         </div>
@@ -215,17 +215,20 @@ export function DashboardPage() {
             {/* Best decision category + mood prompt row */}
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 24 }}>
                 {/* Best category */}
-                <div className="card" style={{ padding: 20 }}>
-                    <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 10 }}>🏆 Best Decision Category</p>
+                <div className="card" style={{ padding: 24, borderLeft: '4px solid var(--gold)' }}>
+                    <p style={{ fontSize: '0.7rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 700, marginBottom: 12 }}>🏆 Mastery Focus</p>
                     {bestCat ? (
                         <div>
-                            <div style={{ fontSize: '1.4rem', fontFamily: 'Playfair Display, serif', fontWeight: 700, color: 'var(--gold)', marginBottom: 4 }}>
+                            <div style={{ fontSize: '1.6rem', fontFamily: 'Playfair Display, serif', fontWeight: 700, color: 'var(--gold)', marginBottom: 2 }}>
                                 {bestCat}
                             </div>
-                            <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>Avg happiness: {bestAvg.toFixed(1)}/10</p>
+                            <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>You're making your most successful choices in this area.</p>
+                            <div style={{ marginTop: 12, fontSize: '0.8rem', color: 'var(--text-primary)', fontWeight: 600 }}>
+                                <span style={{ opacity: 0.6 }}>Success Consistency:</span> {bestAvg.toFixed(1)}/10
+                            </div>
                         </div>
                     ) : (
-                        <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem' }}>Complete reflections to discover your best category</p>
+                        <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem' }}>Log and reflect on more decisions to identify your "High-Mastery" life category.</p>
                     )}
                 </div>
 

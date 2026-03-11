@@ -40,6 +40,7 @@ export default function App() {
     <ThemeProvider>
       <QueryClientProvider client={queryClient}>
         <AuthProvider>
+          <div className="premium-bg" />
           <BrowserRouter>
             <Routes>
               {/* Public routes */}
