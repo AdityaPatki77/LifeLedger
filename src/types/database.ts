@@ -9,6 +9,7 @@ export interface User {
     is_pro: boolean
     pro_expires_at: string | null
     trial_started_at: string | null
+    has_completed_tour: boolean
 }
 
 export type Category = 'Career' | 'Relationships' | 'Health' | 'Finance' | 'Education' | 'Personal'

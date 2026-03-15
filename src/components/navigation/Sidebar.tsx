@@ -25,7 +25,7 @@ export function Sidebar() {
     return (
         <nav className="sidebar">
             {/* ── Logo ── */}
-            <div style={{ padding: '4px 20px 20px', borderBottom: '1px solid var(--border)' }}>
+            <div id="tour-welcome" style={{ padding: '4px 20px 20px', borderBottom: '1px solid var(--border)' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                     <div style={{
                         width: 34, height: 34, borderRadius: 9,
@@ -47,7 +47,7 @@ export function Sidebar() {
             {/* ── Nav items ── */}
             <div style={{ flex: 1, padding: '14px 0', overflowY: 'auto' }}>
                 {/* Log Decision CTA */}
-                <div style={{ padding: '0 14px', marginBottom: 10 }}>
+                <div id="tour-log-decision" style={{ padding: '0 14px', marginBottom: 10 }}>
                     <Link
                         to="/log"
                         className="btn btn-primary btn-full btn-sm"

@@ -175,7 +175,7 @@ export function DashboardPage() {
             )}
 
             {/* ── Stats Grid ── */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 16, marginBottom: 24 }}>
+            <div id="tour-dashboard-stats" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 16, marginBottom: 24 }}>
                 {STATS.map(stat => {
                     const Icon = stat.icon
                     return (
@@ -300,7 +300,7 @@ export function DashboardPage() {
                 </div>
 
                 {/* Mood check-in */}
-                <div className="card" style={{ padding: 24 }}>
+                <div id="tour-mood-checkin" className="card" style={{ padding: 24 }}>
                     {!isPro ? (
                         <div>
                             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
