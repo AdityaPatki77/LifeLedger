@@ -4,7 +4,7 @@
 
 LifeLedger is a sophisticated platform designed for high-performers to quantify their choices, detect cognitive blind spots, and master their life trajectory.
 
-## ✨ Features
+## --> Features
 
 - **Decision Intelligence**: Log and analyze complex decisions with AI-powered quality scoring.
 - **Insight Engine**: (Pro) Detect hidden cognitive biases and behavioral patterns.
@@ -13,14 +13,14 @@ LifeLedger is a sophisticated platform designed for high-performers to quantify 
 - **Mental Model Library**: (Pro) Leverage templates from the world's greatest thinkers.
 - **Privacy First**: Secure Supabase backend with high-level encryption.
 
-## 🚀 Tech Stack
+## --> Tech Stack
 
 - **Frontend**: React (Vite) + Tailwind CSS
 - **Backend**: Supabase (Auth, DB, Edge Functions)
 - **AI**: Mistral AI Integration
 - **Payments**: Razorpay Integrated
 
-## 🛠️ Getting Started
+## --> Getting Started
 
 1. Clone the repository.
 2. Install dependencies: `npm install`
